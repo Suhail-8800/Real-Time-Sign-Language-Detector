@@ -2,7 +2,10 @@ import streamlit as st
 import numpy as np
 from tensorflow.keras.models import load_model
 
+st.set_page_config(page_title="Sign Language Detector")
+
 st.title("🤟 Sign Language Detection Demo")
+st.write("Upload a `.npy` keypoints file to test the model")
 
 @st.cache_resource
 def load():
@@ -14,8 +17,8 @@ model, labels = load()
 
 file = st.file_uploader("Upload .npy file", type=["npy"])
 
-if file:
+if file is not None:
     data = np.load(file)
     data = np.expand_dims(data, axis=0)
-    pred = model.predict(data)
-    st.success(f"Prediction: {labels[np.argmax(pred)]}")
+    preds = model.predict(data)
+    st.success(f"Prediction: {labels[np.argmax(preds)]}")
