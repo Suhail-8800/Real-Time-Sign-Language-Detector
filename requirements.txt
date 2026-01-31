@@ -1,5 +1,10 @@
-opencv-python
-mediapipe
+# opencv-python
+# mediapipe
+# tensorflow==2.13.0
+# numpy
+# gdown
+
 tensorflow==2.13.0
 numpy
+streamlit
 gdown
