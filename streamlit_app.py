@@ -19,7 +19,8 @@ def load():
         st.info("Downloading model... please wait ⏳")
         gdown.download(MODEL_URL, MODEL_PATH, quiet=False)
 
-    model = load_model(MODEL_PATH)
+    # model = load_model(MODEL_PATH)
+    model = load_model(MODEL_PATH, compile=False)
     labels = np.load("label_classes.npy")
     return model, labels
 
