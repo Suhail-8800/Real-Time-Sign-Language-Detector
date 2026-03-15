@@ -1,36 +1,35 @@
-# Sign Language Detection System Using Deep Learning
+# 🖐️ Real-Time Sign Language Recognition & Sentence Formation
 
-This project implements a **real-time Sign Language Detection System** using **MediaPipe, Deep Learning, and an LSTM neural network**.
-The system detects hand gestures from video input and translates them into meaningful words.
+A real-time **Sign Language Recognition system** that converts hand gestures into meaningful words and sentences using deep learning.
 
-The goal of the project is to help **bridge the communication gap between hearing-impaired individuals and people who do not understand sign language**.
+The system uses **MediaPipe for landmark extraction** and an **LSTM neural network** to learn temporal gesture patterns from live webcam input. The application performs **live gesture detection, word prediction, and sentence formation in real time**, helping bridge the communication gap between hearing-impaired individuals and people who do not understand sign language.
 
 ---
 
-# Project Overview
+## 📌 Project Overview
 
 Sign language is widely used by deaf and mute individuals, but many people are not familiar with it.
-This project uses **computer vision and deep learning techniques** to recognize sign language gestures automatically.
+This project uses **computer vision and deep learning techniques** to automatically recognize sign language gestures.
 
-The system processes sign language videos, extracts **hand landmarks using MediaPipe**, and trains a **Long Short-Term Memory (LSTM) model** to recognize gestures from sequences of frames.
+The system processes sign language videos, extracts **hand landmarks using MediaPipe**, and trains a **Long Short-Term Memory (LSTM) neural network** to recognize gestures from sequences of frames.
 
 The trained model can then be used for **real-time gesture detection using a webcam**.
 
 ---
 
-# Key Features
+## 🚀 Features
 
-* Real-time **webcam-based sign detection**
+* Real-time **sign recognition using webcam**
 * **MediaPipe hand landmark detection**
-* **LSTM deep learning model** for gesture recognition
-* **Sequence-based gesture prediction**
-* Support for **20 sign language words**
-* Modular pipeline for **dataset preparation, training, and prediction**
-* Real-time gesture prediction interface
+* **LSTM-based temporal gesture learning**
+* **Sentence formation from continuous predictions**
+* Prediction smoothing for stable output
+* Lightweight **CPU-based inference**
+* Live webcam demo for real-time translation
 
 ---
 
-# Dataset
+## 📊 Dataset
 
 This project uses a subset of the **WLASL (Word-Level American Sign Language) dataset**.
 
@@ -59,7 +58,7 @@ yes
 you
 ```
 
-Dataset processing pipeline:
+### Dataset Processing Pipeline
 
 ```
 WLASL Videos
@@ -77,51 +76,89 @@ LSTM Model Training
 
 ---
 
-# Project Structure
+## 🛠️ Tech Stack
+
+| Component          | Technology                |
+| ------------------ | ------------------------- |
+| Language           | Python                    |
+| Deep Learning      | TensorFlow / Keras (LSTM) |
+| Computer Vision    | OpenCV                    |
+| Landmark Detection | MediaPipe                 |
+| Data Handling      | NumPy, scikit-learn       |
+| IDE                | VS Code                   |
+| Environment        | Anaconda                  |
+| Dataset            | WLASL (subset)            |
+
+---
+
+## 📁 Project Structure
 
 ```
 SignLanguageProject/
-
-data/
- ├── WLASL_20
- ├── WLASL_20_frames
- ├── WLASL_20_keypoints
- └── WLASL_original
-
-copy_wlasl_20.py
-extract_frames.py
-extract_keypoints.py
-prepare_dataset.py
-train_lstm.py
-
-predict_word.py
-predict_sequence.py
-live_demo.py
-test_webcam.py
-
-requirements.txt
-README.md
+│
+├── data/
+│   ├── WLASL_original/
+│   ├── WLASL_20/
+│   ├── WLASL_20_frames/
+│   └── WLASL_20_keypoints/
+│
+├── copy_wlasl_20.py
+├── extract_frames.py
+├── extract_keypoints.py
+├── prepare_dataset.py
+├── train_lstm.py
+├── predict_word.py
+├── predict_sequence.py
+├── live_demo.py
+├── test_webcam.py
+│
+├── sign_language_lstm.h5
+├── label_classes.npy
+└── README.md
 ```
 
 ---
 
-# Technologies Used
+## ⚙️ Installation
 
-* **Python**
-* **TensorFlow / Keras**
-* **MediaPipe**
-* **OpenCV**
-* **NumPy**
-* **Scikit-learn**
-* **Matplotlib**
+Clone the repository:
+
+```
+git clone https://github.com/Suhail-8800/Real-Time-Sign-Language-Detector.git
+cd Real-Time-Sign-Language-Detector
+```
+
+Install dependencies:
+
+```
+pip install -r requirements.txt
+```
 
 ---
 
-# Model Architecture
+## ▶️ Running the Project
 
-The gesture recognition system uses a **Long Short-Term Memory (LSTM) neural network**.
+### Step 1 — Activate Environment
 
-Why LSTM?
+```
+conda activate signlang
+```
+
+### Step 2 — Run the Live Demo
+
+```
+python live_demo.py
+```
+
+A webcam window will open, and gestures will be translated into **words and sentences in real time**.
+
+Press **Q** to exit.
+
+---
+
+## 🧠 Model Architecture
+
+The system uses a **Long Short-Term Memory (LSTM) neural network**.
 
 Sign language gestures are **sequential movements over time**, and LSTM networks are designed to learn patterns from sequential data.
 
@@ -141,104 +178,64 @@ Gesture Prediction
 
 ---
 
-# Installation
+## 🖥️ Example Output
 
-Clone the repository:
-
-```
-git clone https://github.com/yourusername/sign-language-detection.git
-cd sign-language-detection
-```
-
-Install dependencies:
+Example prediction during live inference:
 
 ```
-pip install -r requirements.txt
+Sentence: HELP NO HELP
 ```
+
+The sentence is displayed live while performing gestures.
 
 ---
 
-# Running the Project
+## 🎓 Learning Highlights
 
-### 1. Activate environment (if using Conda)
-
-```
-conda activate signlang
-```
-
-### 2. Run the real-time detection system
-
-```
-python live_demo.py
-```
-
-This will open the webcam and start detecting sign language gestures.
+* Built a complete ML pipeline from **raw videos to real-time inference**
+* Applied **temporal deep learning using LSTM networks**
+* Implemented **real-time gesture recognition**
+* Developed **sentence formation from continuous predictions**
+* Integrated **MediaPipe landmark detection**
+* Designed a **CPU-efficient inference pipeline**
 
 ---
 
-# Training the Model
+## 🔮 Future Improvements
 
-If you want to train the model from scratch:
-
-### Step 1 – Extract frames from videos
-
-```
-python extract_frames.py
-```
-
-### Step 2 – Extract hand landmarks
-
-```
-python extract_keypoints.py
-```
-
-### Step 3 – Prepare sequence dataset
-
-```
-python prepare_dataset.py
-```
-
-### Step 4 – Train the LSTM model
-
-```
-python train_lstm.py
-```
+* Increase vocabulary using larger datasets
+* Implement **full sentence translation**
+* Recognize **numeric gestures (0–9)**
+* Add **speech output for predicted gestures**
+* Deploy as a **web or mobile application**
+* Improve accuracy using **BiLSTM or attention models**
+* Add multilingual output
 
 ---
 
-# Example Prediction
-
-Example output from the system:
-
-```
-Input Gesture: HELP
-Predicted Word: help
-Confidence Score: 0.95
-```
-
----
-
-# Future Improvements
-
-Possible future improvements include:
-
-* Increasing the number of sign language gestures
-* Implementing **full sentence translation**
-* Recognizing **numeric gestures (0–9)**
-* Adding **speech output for predicted gestures**
-* Developing a **complete user-friendly application**
-* Deploying the system as a **mobile or web application**
-
----
-
-# Author
+## 👨‍💻 Author
 
 **Suhail Rajput**
 Computer Science and Engineering
 VIT Bhopal University
 
+📧 [suhailrajput325@gmail.com](mailto:suhailrajput325@gmail.com)
+
+🔗 LinkedIn
+https://www.linkedin.com/in/suhail-rajput-64158722b/
+
+💻 GitHub
+https://github.com/Suhail-8800
+
 ---
 
-# License
+## ⭐ Support
 
-This project is for educational and research purposes.
+If you like this project, consider giving it a **⭐ on GitHub**.
+Your support motivates further open-source development.
+
+---
+
+## 📜 License
+
+This project is for **educational and research purposes**.
